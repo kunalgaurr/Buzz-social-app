@@ -19,8 +19,6 @@ export const Post = ({ data }) => {
   const comment = useRef(null);
   const navigate = useNavigate();
 
-  console.log(data.image);
-
   const currentUser = useSelector((state) => state.auth.user);
 
   const dispatch = useDispatch();
