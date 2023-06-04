@@ -1,0 +1,8 @@
+#success-wrapper {
+  border: 1px solid limegreen;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+  background-color: #32cd3249;
+  color: limegreen;
+  font-weight: 700;
+}

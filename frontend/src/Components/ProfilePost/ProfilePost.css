@@ -1,0 +1,27 @@
+#profile-post-container {
+  display: flex;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+#profie-post-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#profile-post-span {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 4px 1vw;
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  font-weight: 600;
+  opacity: 0;
+}
+
+#profile-post-container:hover > #profile-post-span {
+  opacity: 1;
+}

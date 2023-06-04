@@ -1,0 +1,20 @@
+#random-user-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  background-color: var(--dark-secondary);
+  border: var(--border);
+  border-radius: 10px;
+  padding: 2vh 1vw;
+}
+
+#random-user-header {
+  font-weight: 500;
+  font-size: x-large;
+}
+
+#random-user-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}

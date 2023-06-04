@@ -1,0 +1,100 @@
+#topbar-container {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  background-color: var(--dark-secondary);
+  padding: 0.8vh 0;
+  box-shadow: 0px 0px 20px -8px #303030;
+  border-bottom: var(--border);
+  width: 100%;
+  position: sticky;
+  top: 0;
+  right: 0;
+  z-index: 999;
+}
+#topbar-left {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+#topbar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+#topbar-buttons {
+  display: grid;
+  place-items: center;
+}
+#topbar-button-wrapper {
+  background-color: #1c1c1c;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+#topbar-button {
+  padding: 0.7vh 1vw;
+  border-radius: 5px;
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+  font-weight: 400;
+}
+#topbar-button > span {
+  background-color: #ffffff12;
+  border: var(--border);
+  padding: 2px 7px;
+  border-radius: 50px;
+  font-size: x-small;
+  font-weight: 500;
+}
+#topbar-button:hover {
+  background-color: #303030;
+}
+#topbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+#topbar-img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  height: 40px;
+  border-radius: 50%;
+}
+#topbar-notification,
+#topbar-chat {
+  background-color: #ffffff14;
+  border: var(--border);
+  padding: 10px;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+#topbar-name {
+  font-size: larger;
+}
+
+#topbar-menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  border: var(--border);
+  border-radius: 10px;
+  background-color: black;
+  padding: 2vh 2vw;
+  top: 130%;
+  right: 5%;
+  box-shadow: 0px 0px 20px -8px #303030;
+}
+#topbar-menu > span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+#topbar-menu > span:last-child {
+  color: tomato;
+}

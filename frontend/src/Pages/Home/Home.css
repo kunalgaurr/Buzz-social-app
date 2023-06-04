@@ -1,0 +1,11 @@
+#home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+#home-wrapper {
+  padding: 4vh 2vw;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 2vw;
+}

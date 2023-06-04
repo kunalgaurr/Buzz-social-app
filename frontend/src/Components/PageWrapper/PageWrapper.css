@@ -1,0 +1,10 @@
+#page-wrapper-container {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+#main-page {
+  padding: 2vh 2vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}

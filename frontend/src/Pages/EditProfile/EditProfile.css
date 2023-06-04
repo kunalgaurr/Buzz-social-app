@@ -1,0 +1,88 @@
+#edit-profile-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.edit-profile-children {
+  background-color: var(--dark-secondary);
+  padding: 2vh 1vw;
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  border-radius: 10px;
+  gap: 1vh;
+}
+
+.edit-profile-children:last-child {
+  color: tomato;
+  border: 1px solid #ff634750;
+}
+
+.edit-profile-header {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.edit-profile-label {
+  display: flex;
+  gap: 1vw;
+}
+
+#edit-profile-images {
+  aspect-ratio: 1/1;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-profile-button {
+  padding: 0.5vh 1vw;
+  height: fit-content;
+  color: black;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  align-self: flex-end;
+}
+
+.edit-profile-text {
+  color: grey;
+}
+
+.edit-profie-input {
+  background: none;
+  outline: none;
+  border: var(--border);
+  border-radius: 5px;
+  padding: 0.5vh 1vw;
+  width: 40%;
+}
+
+.edit-profile-box {
+  display: flex;
+  gap: 1vw;
+}
+
+textarea {
+  height: 10vh;
+  background: none;
+  padding: 1vh 1vw;
+  border: var(--border);
+  border-radius: 10px;
+  outline: none;
+}
+
+.edit-profile-children:last-child > span {
+  color: tomato;
+}
+
+#delete-button {
+  width: fit-content;
+  padding: 0.5vh 1vw;
+  color: tomato;
+  border: 1px solid #ff6347;
+  font-weight: 500;
+  background: none;
+  border-radius: 5px;
+}

@@ -1,0 +1,93 @@
+#register-container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+#register-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  gap: 5vw;
+}
+#register-left,
+#register-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+#register-left-title {
+  font-size: xx-large;
+  font-weight: 500;
+}
+#register-left-title > span {
+  color: #0073ff;
+}
+#register-right-wrapper {
+  background-color: var(--dark-secondary);
+  height: fit-content;
+  padding: 2vh 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+#register-right-title {
+  font-size: xx-large;
+  color: var(--blue);
+}
+#register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.register-label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.register-input {
+  background: none;
+  border: var(--border);
+  outline: none;
+  padding: 0.5vh 0.5vw;
+  color: white;
+  border-radius: 5px;
+}
+.register-input:focus {
+  border: 1px solid var(--blue);
+}
+.register-input-name {
+  position: absolute;
+  left: 0.5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--dark-secondary);
+  cursor: text;
+  padding: 0 0.5vw;
+  pointer-events: none;
+}
+#login-button {
+  background-color: var(--blue);
+  padding: 0.5vh 0.5vw;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}
+#register-button:disabled {
+  opacity: 70%;
+  cursor: not-allowed;
+}
+#register-forgot-password {
+  color: var(--blue);
+  font-size: smaller;
+  cursor: pointer;
+}
+#register-button {
+  background-color: white;
+  padding: 0.5vh 0.5vw;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+}

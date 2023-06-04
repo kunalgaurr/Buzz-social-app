@@ -1,0 +1,74 @@
+#post-page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#post-page-left {
+  display: grid;
+  place-items: center;
+}
+#post-page-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+#post-page-right {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  padding: 4vh 2vw;
+}
+#profile-post-right-top {
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+}
+
+#profile-post-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+#profile-post-user-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#profile-post-time-ago {
+  color: grey;
+}
+
+#profile-post-user-image {
+  height: 50px;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#post-page-right-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  border: var(--border);
+}
+
+.post-page-button {
+  padding: 1vh 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  border-right: var(--border);
+}
+
+.post-page-button:hover {
+  background-color: rgba(128, 128, 128, 0.251);
+}
+
+#post-page-new-comment {
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}

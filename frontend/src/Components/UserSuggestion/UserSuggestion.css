@@ -1,0 +1,30 @@
+#user-suggestion-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+  width: 100%;
+  cursor: pointer;
+}
+
+#user-suggestion-image {
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  width: 50px;
+  object-fit: cover;
+}
+
+#user-suggestion-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#user-suggestion-name {
+  font-size: large;
+  font-weight: 500;
+}
+
+#user-suggestion-description {
+  font-size: small;
+  color: grey;
+}

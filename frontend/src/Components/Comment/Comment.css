@@ -1,0 +1,20 @@
+#comment-container {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  padding: 1vh 0;
+}
+#comment-user-img {
+  aspect-ratio: 1/1;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+#comment-right {
+  display: flex;
+  flex-direction: column;
+}
+#comment-user-name {
+  font-weight: 500;
+}

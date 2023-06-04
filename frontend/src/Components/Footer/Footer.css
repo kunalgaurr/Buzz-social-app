@@ -1,0 +1,11 @@
+#footer-container {
+  display: flex;
+  gap: 1vw;
+  flex-wrap: wrap;
+  padding: 2vh 1vw;
+}
+
+.footer-children {
+  font-size: xx-small;
+  color: grey;
+}

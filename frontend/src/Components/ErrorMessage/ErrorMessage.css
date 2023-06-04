@@ -1,0 +1,8 @@
+#error-wrapper {
+  border: 1px solid tomato;
+  padding: 1vh 2vw;
+  border-radius: 5px;
+  background-color: #ff634728;
+  color: tomato;
+  font-weight: 700;
+}

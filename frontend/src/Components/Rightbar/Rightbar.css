@@ -1,0 +1,7 @@
+#rightbar-container {
+  padding: 2vh 1vw;
+  padding-left: 0;
+  position: sticky;
+  top: 57px;
+  right: 0;
+}
