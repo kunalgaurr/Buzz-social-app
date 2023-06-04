@@ -13,6 +13,12 @@ const replyRoute = require('./routes/replyRoute');
 const communityRoute = require('./routes/communityRoute');
 const connectDB = require('./config/connectDB');
 
+process.on('uncaughtException', (err) => {
+  console.log(`Error: ${err.message}`.bold.red);
+  console.log('Shutting down the server due to uncaught exception'.bold.red);
+  process.exit(1);
+});
+
 dotenv.config({ path: './config/config.env' });
 
 connectDB();
@@ -58,4 +64,14 @@ app.listen(PORT, () => {
   console.log(
     `Server is running on http://localhost:${PORT} on port ${PORT}`.bold.yellow
   );
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log(`Error: ${err.message}`.bold.red);
+  console.log(
+    'Shutting down the server due to Unhandled Promise Rejection'.bold.red
+  );
+  server.close(() => {
+    process.exit(1);
+  });
 });
