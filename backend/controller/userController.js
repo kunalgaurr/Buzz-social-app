@@ -1,6 +1,7 @@
 const AppError = require('../middleware/AppError');
 const Post = require('../models/postModel');
 const User = require('../models/userModel');
+const Comment = require('../models/commentModel');
 const errorCatcher = require('../utilites/errorCatcher');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -103,6 +104,9 @@ exports.deleteUser = errorCatcher(async (req, res) => {
   if (!user) {
     throw new AppError('User not found', 404);
   }
+  const post = await Post.findByIdAndDelete({ userId: user._id });
+  const comment = await Comment.findByIdAndDelete({ userId: user._id });
+
   res.status(200).json({
     success: true,
     message: 'User deleted successfully',
