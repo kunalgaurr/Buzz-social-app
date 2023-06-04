@@ -1,7 +1,6 @@
 const User = require('../models/userModel');
 const Community = require('../models/communityModel');
 const communityPost = require('../models/communityPostModel');
-const tryCatch = require('');
 const errorCatcher = require('../utilites/errorCatcher');
 const AppError = require('../middleware/AppError');
 
