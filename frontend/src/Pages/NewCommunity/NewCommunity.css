@@ -1,0 +1,26 @@
+#new-community-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  border: var(--border);
+  border-radius: 10px;
+  background-color: var(--dark-secondary);
+  overflow: hidden;
+}
+
+#new-community-top {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-community-cover-image {
+  width: 100%;
+  aspect-ratio: 16/7;
+  object-fit: contain;
+}
+
+#new-community-container > label {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
