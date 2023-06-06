@@ -7,6 +7,10 @@ const communitySchema = mongoose.Schema(
     description: { type: String, required: true },
     members: { type: Array, default: [] },
     posts: { type: Array, default: [] },
+    images: {
+      profile: { type: String, required: true },
+      cover: { type: String, require: true },
+    },
   },
   { timestamps: true }
 );
