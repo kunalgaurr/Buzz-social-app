@@ -7,11 +7,12 @@ import {
   HiOutlineCurrencyRupee,
   HiOutlineNewspaper,
 } from 'react-icons/hi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SearchResult } from '../SearchResult/SearchResult';
 
 export const Leftbar = () => {
+  const navigate = useNavigate();
   const [home, setHome] = useState(false);
   const [community, setCommunity] = useState(false);
   const [marketplace, setMarketplace] = useState(false);
@@ -105,17 +106,12 @@ export const Leftbar = () => {
         </div>
         <hr style={{ borderWidth: '1px', borderColor: '#303030' }} />
         <div id="leftbar-communities">
-          <div id="leftbar-community">
-            <img src="/assets/teamwork.png" alt="" id="leftbar-community-img" />
-            <span id="leftbar-commnunity-name">Coding</span>
-          </div>
-          <div id="leftbar-community">
-            <img src="/assets/teamwork.png" alt="" id="leftbar-community-img" />
-            <span id="leftbar-commnunity-name">NFT's</span>
-          </div>
-          <div id="leftbar-community">
-            <img src="/assets/teamwork.png" alt="" id="leftbar-community-img" />
-            <span id="leftbar-commnunity-name">Cryptocurrency </span>
+          <div
+            id="leftbar-community"
+            onClick={() => navigate('/community/new')}
+          >
+            <img src="/assets/plus.png" alt="" id="leftbar-community-img" />
+            <span id="leftbar-commnunity-name">Create a community</span>
           </div>
         </div>
         <div id="leftbar-events">
