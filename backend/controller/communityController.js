@@ -1,6 +1,6 @@
 const User = require('../models/userModel');
 const Community = require('../models/communityModel');
-const communityPost = require('../models/communityPostModel');
+const CommunityPost = require('../models/communityPostModel');
 const errorCatcher = require('../utilites/errorCatcher');
 const AppError = require('../middleware/AppError');
 
@@ -73,5 +73,7 @@ exports.joinCommunity = errorCatcher(async (req, res) => {
 
 exports.deleteCommunity = errorCatcher(async (req, res) => {
   const community = await Community.findByIdAndDelete(req.params.communityId);
-  const communityPost = await CommunityPost.findByIdAndDelete({ communityId });
+  const communityPost = await CommunityPost.find(req.params.communityId);
+  communityPost.delete();
+  await communityPost.save();
 });
