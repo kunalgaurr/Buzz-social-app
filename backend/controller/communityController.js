@@ -16,7 +16,9 @@ exports.createCommunity = errorCatcher(async (req, res) => {
     description,
   });
   newCommunity.members.push(admin);
+  user.communities.push(newCommunity._id);
   await newCommunity.save();
+  await user.save();
   return res.status(200).json(newCommunity);
 });
 
