@@ -148,16 +148,28 @@ exports.friendRequest = errorCatcher(async (req, res) => {
   } else {
     if (friend.friendRequests.includes(user._id)) {
       friend.friendRequests.pull(user._id);
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: `Friend request canceled`,
       });
     } else {
       friend.friendRequests.push(user._id);
-      res.status(200).json({
+      return res.status(200).json({
         success: true,
         message: `Friend request sent to ${friend.name}`,
       });
     }
   }
+});
+
+exports.getFriends = errorCatcher(async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+  const friends = await User.find({ friendId: user.friends });
+  if (!friends) {
+    throw new AppError('Friends not found', 404);
+  }
+  return res.status(200).json(friends);
 });
