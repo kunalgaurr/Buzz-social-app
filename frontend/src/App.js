@@ -11,6 +11,7 @@ import { PostPage } from './Pages/PostPage/PostPage';
 import { EditProfile } from './Pages/EditProfile/EditProfile';
 import { Setting } from './Pages/Setting/Setting';
 import { Chat } from './Pages/Chat/Chat';
+import { NewCommunity } from './Pages/NewCommunity/NewCommunity';
 
 function App() {
   const user = localStorage.getItem('user');
@@ -29,6 +30,7 @@ function App() {
           <Route path="/profile/:userId/edit" element={<EditProfile />} />
           <Route path="/profile/:userId/settings" element={<Setting />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/community/new" element={<NewCommunity />} />
         </Routes>
       </div>
     );
