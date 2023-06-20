@@ -4,6 +4,7 @@ const Comment = require('../models/commentModel');
 const errorCatcher = require('../utilites/errorCatcher');
 const AppError = require('../middleware/AppError');
 
+// POST A COMMENT 
 exports.postComment = errorCatcher(async (req, res) => {
   const { userId, postId, comment } = req.body;
   const user = await User.findById(userId);
@@ -28,6 +29,7 @@ exports.postComment = errorCatcher(async (req, res) => {
   });
 });
 
+// DELETE A COMMENT 
 exports.deleteComment = errorCatcher(async (req, res) => {
   const { userId, postId } = req.body;
   const user = await User.findById(userId);
@@ -45,6 +47,7 @@ exports.deleteComment = errorCatcher(async (req, res) => {
   });
 });
 
+// GET SINGLE POST COMMENT
 exports.getSinglePostComment = errorCatcher(async (req, res) => {
   const post = await Post.findById(req.params.postId);
   if (!post) {
