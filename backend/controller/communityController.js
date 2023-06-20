@@ -4,6 +4,7 @@ const CommunityPost = require('../models/communityPostModel');
 const errorCatcher = require('../utilites/errorCatcher');
 const AppError = require('../middleware/AppError');
 
+// CREATE A NEW COMMUNITY
 exports.createCommunity = errorCatcher(async (req, res) => {
   const { admin, name, description } = req.body;
   const user = await User.findById(admin);
@@ -22,11 +23,13 @@ exports.createCommunity = errorCatcher(async (req, res) => {
   return res.status(200).json(newCommunity);
 });
 
+// GET ALL COMMUNITY
 exports.getAllCommunity = errorCatcher(async (req, res) => {
   const communities = await Community.find();
   return res.status(200).json(communities);
 });
 
+// GET SINGLE COMMUNITY
 exports.getSingleCommunity = errorCatcher(async (req, res) => {
   const community = await Community.findById(req.params.communityId);
   if (!community) {
@@ -35,6 +38,7 @@ exports.getSingleCommunity = errorCatcher(async (req, res) => {
   return res.status(200).json(community);
 });
 
+// EDIT SINGLE COMMUNITY
 exports.editCommunity = errorCatcher(async (req, res) => {
   const community = await Community.findById(req.params.communityId);
   if (!community) {
@@ -49,6 +53,7 @@ exports.editCommunity = errorCatcher(async (req, res) => {
   });
 });
 
+// JOIN A COMMUNITY
 exports.joinCommunity = errorCatcher(async (req, res) => {
   const community = await Community.findById(req.params.communityId);
   if (!community) {
@@ -71,9 +76,21 @@ exports.joinCommunity = errorCatcher(async (req, res) => {
   }
 });
 
+// DELETE A COMMUNITY
 exports.deleteCommunity = errorCatcher(async (req, res) => {
   const community = await Community.findByIdAndDelete(req.params.communityId);
+  const admin = await User.findById(req.body.adminId);
+  if (!admin) {
+    throw new AppError('Admin not found', 404);
+  }
+  if (community.admin !== admin._id) {
+    throw new AppError('Only admin can delete this community.', 403);
+  }
   const communityPost = await CommunityPost.find(req.params.communityId);
   communityPost.delete();
   await communityPost.save();
 });
+
+// exports.removeMember = errorCatcher(async(req, res) => {
+
+// })
