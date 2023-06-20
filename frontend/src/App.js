@@ -12,6 +12,7 @@ import { EditProfile } from './Pages/EditProfile/EditProfile';
 import { Setting } from './Pages/Setting/Setting';
 import { Chat } from './Pages/Chat/Chat';
 import { NewCommunity } from './Pages/NewCommunity/NewCommunity';
+import { UserChat } from './Pages/UserChat/UserChat';
 
 function App() {
   const user = localStorage.getItem('user');
@@ -31,6 +32,7 @@ function App() {
           <Route path="/profile/:userId/settings" element={<Setting />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/community/new" element={<NewCommunity />} />
+          <Route path="/chat/:friendId" element={<UserChat />} />
         </Routes>
       </div>
     );
@@ -41,14 +43,16 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
-          <Route path="/explore" element={<Register />} />
-          <Route path="/news" element={<Register />} />
-          <Route path="/community/post" element={<Register />} />
+          <Route path="/explore" element={<Login />} />
+          <Route path="/news" element={<Login />} />
+          <Route path="/community/post" element={<Login />} />
           <Route path="/profile/:userId" element={<Login />} />
           <Route path="/profile/post/:postId" element={<Login />} />
           <Route path="/profile/:userId/edit" element={<Login />} />
           <Route path="/profile/:userId/settings" element={<Login />} />
           <Route path="/chat" element={<Login />} />
+          <Route path="/community/new" element={<Login />} />
+          <Route path="/chat/:friendId" element={<Login />} />
         </Routes>
       </div>
     );
