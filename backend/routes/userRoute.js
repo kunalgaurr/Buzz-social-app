@@ -8,6 +8,7 @@ const {
   resetPassword,
   friendRequest,
   deleteUser,
+  getFriends,
 } = require('../controller/userController');
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.route('/:userId').put(updateUser);
 router.route('/:userId').delete(deleteUser);
 router.route('/:userId/reset-password').put(resetPassword);
 router.route('/:friendId/:userId').put(friendRequest);
+router.route('/friends/:userId').get(getFriends);
 
 module.exports = router;
