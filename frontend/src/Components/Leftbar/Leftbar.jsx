@@ -111,7 +111,9 @@ export const Leftbar = () => {
             onClick={() => navigate('/community/new')}
           >
             <img src="/assets/plus.png" alt="" id="leftbar-community-img" />
-            <span id="leftbar-commnunity-name">Create a community</span>
+            <span id="leftbar-commnunity-name" style={{ fontWeight: 500 }}>
+              Create a community
+            </span>
           </div>
         </div>
         <div id="leftbar-events">
