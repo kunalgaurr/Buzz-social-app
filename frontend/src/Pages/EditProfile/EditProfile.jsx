@@ -2,11 +2,12 @@ import './EditProfile.css';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import { Topbar } from '../../Components/Topbar/Topbar';
 import { PageWrapper } from '../../Components/PageWrapper/PageWrapper';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 import axios from 'axios';
 import { SuccessMessage } from '../../Components/SuccessMessage/SuccessMessage';
 import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage';
+import { loginUser } from '../../redux/authReducer';
 
 export const EditProfile = () => {
   const user = useSelector((state) => state.auth.user);
@@ -21,6 +22,7 @@ export const EditProfile = () => {
   const oldPassword = useRef();
   const newPassword = useRef();
   const confirmPassword = useRef();
+  const dispatch = useDispatch();
 
   const handleChange = async (e) => {
     const file = e.target.files[0];
@@ -29,6 +31,7 @@ export const EditProfile = () => {
     const response = await axios.post('/upload', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
+    dispatch(loginUser(user.email, user.password));
     setImageUrl(response.data.imageUrl);
   };
 
@@ -39,6 +42,7 @@ export const EditProfile = () => {
       };
       await axios.put(`/user/${user._id}`, details);
       setMessage('Image uploaded successfully.');
+      dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
     }
@@ -51,6 +55,7 @@ export const EditProfile = () => {
       };
       await axios.put(`/user/${user._id}`, details);
       setMessage('Name changed successfully.');
+      dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
     }
@@ -63,6 +68,7 @@ export const EditProfile = () => {
       };
       await axios.put(`/user/${user._id}`, details);
       setMessage('Email changed successfully');
+      dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
     }
@@ -78,6 +84,7 @@ export const EditProfile = () => {
       };
       await axios.put(`/user/${user._id}`, details);
       setMessage('Description changed successfully');
+      dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
     }
@@ -92,6 +99,7 @@ export const EditProfile = () => {
       };
       await axios.put(`/user/${user._id}/reset-password`, details);
       setMessage('Password changed successfully');
+      dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
     }
