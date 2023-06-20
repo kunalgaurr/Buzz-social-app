@@ -5,6 +5,7 @@ const Comment = require('../models/commentModel');
 const errorCatcher = require('../utilites/errorCatcher');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Community = require('../models/communityModel');
 
 exports.registerUser = errorCatcher(async (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
@@ -171,5 +172,22 @@ exports.getFriends = errorCatcher(async (req, res) => {
   if (!friends) {
     throw new AppError('Friends not found', 404);
   }
+  return res.status(200).json(friends);
+});
+
+exports.getEverything = errorCatcher(async (req, res) => {
+  const users = await User.find();
+  const communities = await Community.find();
+  return res
+    .status(200)
+    .json(users.concat(communities).sort({ createdAt: -1 }));
+});
+
+exports.getFriends = errorCatcher(async (req, res) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+  const friends = await User.find({ friends: user.friends });
   return res.status(200).json(friends);
 });
