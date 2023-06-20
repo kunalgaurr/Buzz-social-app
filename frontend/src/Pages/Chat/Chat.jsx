@@ -15,7 +15,6 @@ export const Chat = () => {
           </span>
         </div>
         <div id="chat-right">
-          <span id="chat-heading">Your friends.</span>
           <div id="chat-body">
             <FriendList />
           </div>

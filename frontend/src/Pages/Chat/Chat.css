@@ -1,7 +1,7 @@
 #chat-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: unset;
+  height: 91.8vh;
   position: relative;
 }
 
@@ -31,7 +31,6 @@
 }
 
 #chat-right {
-  padding: 1vh 1vw;
   min-height: inherit;
 }
 
