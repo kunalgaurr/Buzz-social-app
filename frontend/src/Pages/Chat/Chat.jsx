@@ -1,3 +1,4 @@
+import { FriendList } from '../../Components/FriendList/FriendList';
 import { Topbar } from '../../Components/Topbar/Topbar';
 import { Wrapper } from '../../Components/Wrapper/Wrapper';
 import './Chat.css';
@@ -15,7 +16,9 @@ export const Chat = () => {
         </div>
         <div id="chat-right">
           <span id="chat-heading">Your friends.</span>
-          <div id="chat-body"></div>
+          <div id="chat-body">
+            <FriendList />
+          </div>
         </div>
       </div>
     </Wrapper>
