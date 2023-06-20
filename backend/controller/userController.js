@@ -168,7 +168,7 @@ exports.getFriends = errorCatcher(async (req, res) => {
   if (!user) {
     throw new AppError('User not found', 404);
   }
-  const friends = await User.find({ friendId: user.friends });
+  const friends = await User.find({ _id: { $in: user.friends } });
   if (!friends) {
     throw new AppError('Friends not found', 404);
   }
@@ -181,13 +181,4 @@ exports.getEverything = errorCatcher(async (req, res) => {
   return res
     .status(200)
     .json(users.concat(communities).sort({ createdAt: -1 }));
-});
-
-exports.getFriends = errorCatcher(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    throw new AppError('User not found', 404);
-  }
-  const friends = await User.find({ friends: user.friends });
-  return res.status(200).json(friends);
 });
