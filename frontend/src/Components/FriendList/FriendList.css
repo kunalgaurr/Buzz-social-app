@@ -1,0 +1,42 @@
+#friend-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  padding: 2vh 1vw;
+}
+
+#friend-list-search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1vw;
+  border: none;
+  background-color: #80808045;
+  border-radius: 50px;
+}
+
+#friend-list-search-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0.5vh 1vw;
+}
+
+#friend-account {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+#friend-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#friend-name {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
