@@ -32,6 +32,7 @@ function App() {
           <Route path="/profile/:userId/settings" element={<Setting />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="/community/new" element={<NewCommunity />} />
+          <Route path="/community/:communityId" element={<Community />} />
           <Route path="/chat/:friendId" element={<UserChat />} />
         </Routes>
       </div>
