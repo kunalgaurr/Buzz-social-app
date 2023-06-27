@@ -15,18 +15,19 @@ export const Post = ({ data }) => {
   const [comments, setComments] = useState([]);
   const [settings, setSettings] = useState(false);
   const [like, setLike] = useState(data.likes.length);
-  const [isLiked, setIsLiked] = useState(false);
   const comment = useRef(null);
   const navigate = useNavigate();
 
   const currentUser = useSelector((state) => state.auth.user);
+
+  const [isLiked, setIsLiked] = useState(data.likes.includes(currentUser._id));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`user/${data?.userId}`);
-      await setUser(res.data);
+      setUser(res.data);
     };
 
     fetchUser();
@@ -116,7 +117,7 @@ export const Post = ({ data }) => {
           onClick={handleLike}
           style={{
             color:
-              isLiked || data.likes.includes(currentUser._id)
+              isLiked
                 ? 'var(--blue)'
                 : 'white',
           }}
