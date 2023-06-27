@@ -98,3 +98,23 @@
 #topbar-menu > span:last-child {
   color: tomato;
 }
+
+@media (max-width: 768px) {
+  #topbar-buttons {
+    display: none;
+  }
+
+  #topbar-right {
+    gap: 10px;
+  }
+
+  #topbar-name {
+    display: none;
+  }
+
+  #topbar-logo-name {
+    color: var(--blue);
+    font-weight: 500;
+    font-size: x-large;
+  }
+}

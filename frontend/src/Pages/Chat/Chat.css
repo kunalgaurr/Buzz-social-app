@@ -38,3 +38,13 @@
   font-size: x-large;
   font-weight: 500;
 }
+
+@media (max-width: 768px) {
+  #chat-container {
+    display: block;
+  }
+
+  #chat-left {
+    display: none;
+  }
+}

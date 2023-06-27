@@ -2,3 +2,13 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+
+@media (max-width: 768px) {
+  #user-chat-container {
+    display: block;
+  }
+
+  #friend-list-box {
+    display: none;
+  }
+}

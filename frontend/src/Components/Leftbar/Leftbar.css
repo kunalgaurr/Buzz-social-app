@@ -108,3 +108,9 @@
   padding: 2vh 1vw;
   box-shadow: 0px 0px 20px -5px #303030;
 }
+
+@media (max-width: 768px) {
+  #leftbar-container {
+    display: none;
+  }
+}
