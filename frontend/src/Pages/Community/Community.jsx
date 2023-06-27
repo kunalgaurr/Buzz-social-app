@@ -6,10 +6,21 @@ import { PageWrapper } from '../../Components/PageWrapper/PageWrapper';
 export const Community = () => {
   return (
     <Wrapper>
-      <div id="community-container">
         <Topbar />
-        <PageWrapper></PageWrapper>
-      </div>
+        <PageWrapper>
+          <div id="community-wrapper">
+            <img src="" alt="" id="community-cover" />
+            <div id="community-top">
+              <img src="" alt="" id="community-image" />
+              <div id="community-top-right">
+                <span id="community-name"></span>
+                <span id="community-description"></span>
+                <span id="community-members"></span>
+              </div>
+            </div>
+            
+          </div>
+        </PageWrapper>
     </Wrapper>
   );
 };
