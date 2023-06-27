@@ -8,3 +8,9 @@
   flex-direction: column;
   gap: 2vh;
 }
+
+@media (max-width: 768px) {
+  #page-wrapper-container {
+    display: block;
+  }
+}
