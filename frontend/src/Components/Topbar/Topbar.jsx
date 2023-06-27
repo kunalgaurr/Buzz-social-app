@@ -28,7 +28,7 @@ export const Topbar = ({ logo, name }) => {
     <div id="topbar-container">
       <div id="topbar-left">
         <div id="topbar-logo">
-          {logo} <span id="topbar-name">{name}</span>
+          <span id="topbar-logo-name">Buzz</span>
         </div>
         <div id="topbar-buttons">
           <div id="topbar-button-wrapper">
