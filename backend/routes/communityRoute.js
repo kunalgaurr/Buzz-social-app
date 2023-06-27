@@ -6,6 +6,7 @@ const {
   editCommunity,
   joinCommunity,
   deleteCommunity,
+  getSingleUserCommunity,
 } = require('../controller/communityController');
 const router = express.Router();
 
@@ -15,5 +16,6 @@ router.route('/:communityId').get(getSingleCommunity);
 router.route('/:communityId').put(editCommunity);
 router.route('/:communityId/join').put(joinCommunity);
 router.route('/:communityId').delete(deleteCommunity);
+router.route('/user/:userId').get(getSingleUserCommunity);
 
 module.exports = router;

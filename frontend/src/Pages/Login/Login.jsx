@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { useFormik } from 'formik';
 import './Login.css';
 import { loginSchema } from '../../Schema/loginSchema';
-import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/authReducer';
@@ -11,6 +10,7 @@ export const Login = () => {
   const loading = useSelector((state) => state.auth.loading);
   const [emailToggle, setEmailToggle] = useState(false);
   const [passwordToggle, setPasswordToggle] = useState(false);
+  const [apiError, setApiError] = useState(null);
   const email = useRef();
   const password = useRef();
 
@@ -27,25 +27,19 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(loginUser(email.current.value, password.current.value));
-
-    if (!loading) {
-      navigate('/');
+    try {
+      dispatch(loginUser(email.current.value, password.current.value));
+    } catch (error) {
+      setApiError(error.response.data.message);
     }
   };
 
-  console.log(loading);
+  if (loading) {
+    navigate('/');
+  }
 
   return (
     <div id="login-container">
-      <div className="error-container">
-        <ErrorMessage
-          error={
-            (touched.email && errors.email) ||
-            (touched.password && errors.password)
-          }
-        />
-      </div>
       <div id="login-wrapper">
         <div id="login-left">
           <span id="login-left-title">
@@ -87,6 +81,9 @@ export const Login = () => {
                   Enter your email
                 </span>
               </label>
+              <span className="error-message">
+                {touched.email && errors.email}
+              </span>
               <label
                 htmlFor=""
                 className="login-label"
@@ -114,6 +111,10 @@ export const Login = () => {
                   Enter your password
                 </span>
               </label>
+              <span className="error-message">
+                {touched.password && errors.password}
+              </span>
+              <span className="error-message">{apiError}</span>
               <button id="login-button">Log in</button>
               <span id="login-forgot-password" type="submit">
                 Forgot password?

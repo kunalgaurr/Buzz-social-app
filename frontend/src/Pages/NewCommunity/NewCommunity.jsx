@@ -4,37 +4,25 @@ import { Topbar } from '../../Components/Topbar/Topbar';
 import { PageWrapper } from '../../Components/PageWrapper/PageWrapper';
 import { BsFillPencilFill } from 'react-icons/bs';
 import './NewCommunity.css';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createCommunity } from '../../redux/communityReducer';
 import { useNavigate } from 'react-router-dom';
-import { useFormik } from 'formik';
-import { communityScema } from '../../Schema/communitySchema';
 
 export const NewCommunity = () => {
   const user = useSelector((state) => state.auth.user);
-  const [community, setCommunity] = useState();
   const [name, setName] = useState(null);
   const [description, setDescription] = useState(null);
   const navigate = useNavigate();
-
-  const { values, errors, touched } = useFormik({
-    initialValues: {
-      admin: user._id,
-      name: name,
-      description: description,
-    },
-    validate: communityScema,
-  });
+  const dispatch = useDispatch();
 
   const handleClick = async () => {
-    const communityData = {
+    const data = {
       admin: user._id,
       name: name,
       description: description,
     };
-    const res = await axios.post('/community/create', communityData);
-    await setCommunity(res.data);
-    navigate(`/community/${community._id}`);
+    dispatch(createCommunity(data));
+    navigate('/');
   };
   return (
     <Wrapper>
@@ -59,18 +47,14 @@ export const NewCommunity = () => {
                   type="text"
                   id="community-name-input"
                   placeholder="Enter community name"
-                  value={values.name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                {/* <span>{name.touched ? name.errors : null}</span> */}
                 <textarea
                   cols="30"
                   rows="10"
                   placeholder="Enter community description."
-                  value={values.description}
                   onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
-                {/* <span>{description.touched ? description.errors : null}</span> */}
               </div>
             </div>
           </div>

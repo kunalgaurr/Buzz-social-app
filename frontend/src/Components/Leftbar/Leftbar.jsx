@@ -10,6 +10,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { SearchResult } from '../SearchResult/SearchResult';
+import { useSelector } from 'react-redux';
 
 export const Leftbar = () => {
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ export const Leftbar = () => {
   const [users, setUsers] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const user = useSelector((state) => state.auth.user);
+  const [communities, setCommunities] = useState();
 
   useEffect(() => {
     const getUsers = async () => {
@@ -43,6 +46,19 @@ export const Leftbar = () => {
       setNews(true);
     }
   }, []);
+
+  useEffect(() => {
+    const getCommunities = async () => {
+      try {
+        const res = await axios.get(`/community/user/${user._id}`);
+        setCommunities(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getCommunities();
+  });
 
   const handleSearchInputChange = (e) => {
     const searchValue = e.target.value.toLowerCase();
@@ -115,6 +131,18 @@ export const Leftbar = () => {
               Create a community
             </span>
           </div>
+          {/* {communities.map((e) => (
+            <div
+              id="leftbar-community"
+              onClick={() => navigate('/community/new')}
+            >
+              <img src="/assets/plus.png" alt="" id="leftbar-community-img" />
+              <span
+                id="leftbar-commnunity-name"
+                style={{ fontWeight: 500 }}
+              ></span>
+            </div>
+          ))} */}
         </div>
         <div id="leftbar-events">
           <div id="leftbar-event"></div>

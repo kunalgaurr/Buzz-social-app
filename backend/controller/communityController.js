@@ -87,10 +87,22 @@ exports.deleteCommunity = errorCatcher(async (req, res) => {
     throw new AppError('Only admin can delete this community.', 403);
   }
   const communityPost = await CommunityPost.find(req.params.communityId);
-  communityPost.delete();
+  await communityPost.delete();
   await communityPost.save();
+  const user = await User.find(community.members);
+  user.forEach((e) => {
+    e.communities.pull(community._id);
+  });
+  user.save();
+  res.status(200).json('Community deleted successfully');
 });
 
-// exports.removeMember = errorCatcher(async(req, res) => {
-
-// })
+// GET SINGLE USER COMMUNITY
+exports.getSingleUserCommunity = errorCatcher(async (req, res) => {
+  const user = await User.findById(req.params.userId);
+  if (!user) {
+    throw new AppError('User not found', 404);
+  }
+  const communities = await Community.find({ _id: { $in: user.communities } });
+  res.status(200).json(communities);
+});

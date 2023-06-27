@@ -1,22 +1,19 @@
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
-import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage';
 import './Register.css';
 import { registerSchema } from '../../Schema/registerSchema';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
-  // USING REACT STATE FOR ANIAMTIONS
   const [nameToggle, setNameToggle] = useState(false);
   const [emailToggle, setEmailToggle] = useState(false);
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
-  const [apiError, setApiError] = useState('');
+  const [apiError, setApiError] = useState(null);
 
   const navigate = useNavigate();
 
-  //REGISTERING THE USER IN DATABASE USING API AND AXIOS
   const isSubmiting = async (e) => {
     e.preventDefault();
     const user = {
@@ -34,7 +31,6 @@ export const Register = () => {
     }
   };
 
-  // FORM VALIDATIONS USING FORMIK AND YUP
   const {
     values,
     handleBlur,
@@ -53,21 +49,9 @@ export const Register = () => {
     validationSchema: registerSchema,
     isSubmiting,
   });
+
   return (
     <div id="register-container">
-      <div className="error-container">
-        <ErrorMessage
-          error={
-            (touched.name && errors.name) ||
-            (touched.email && errors.email) ||
-            (touched.password && errors.password) ||
-            (touched.confirmPassword && errors.confirmPassword) ||
-            apiError
-              ? apiError
-              : undefined
-          }
-        />
-      </div>
       <div id="register-wrapper">
         <div id="register-left">
           <span id="register-left-title">
@@ -114,6 +98,9 @@ export const Register = () => {
                   Enter your name
                 </span>
               </label>
+              <span className="error-message">
+                {touched.name && errors.name}
+              </span>
               <label
                 htmlFor=""
                 className="register-label"
@@ -140,6 +127,9 @@ export const Register = () => {
                   Enter your email
                 </span>
               </label>
+              <span className="error-message">
+                {touched.email && errors.email}
+              </span>
               <label
                 htmlFor=""
                 className="register-label"
@@ -166,6 +156,10 @@ export const Register = () => {
                   Enter your password
                 </span>
               </label>
+              <span className="error-message">
+                {touched.password && errors.password}
+              </span>
+
               <label
                 htmlFor=""
                 className="register-label"
@@ -189,10 +183,13 @@ export const Register = () => {
                     color: confirmPasswordToggle ? 'var(--blue)' : 'white',
                   }}
                 >
-                  {' '}
-                  Confirm your password{' '}
+                  Confirm your password
                 </span>
               </label>
+              <span className="error-message">
+                {touched.confirmPassword && errors.confirmPassword}
+              </span>
+              <span className="error-message">{apiError}</span>
               <button
                 id="register-button"
                 disabled={isSubmitting}

@@ -7,7 +7,6 @@ import {
 } from 'react-icons/hi';
 import EmojiPicker from 'emoji-picker-react';
 import './NewPost.css';
-import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { uploadPost } from '../../redux/postReducer';
 import axios from 'axios';
@@ -95,7 +94,7 @@ export const NewPost = () => {
           style={{ display: previewImage === null ? 'none' : 'block' }}
         />
       </div>
-      <ErrorMessage error={error} />
+      <span className="error-message">{error}</span>
       <div id="new-post-bottom">
         <div id="new-post-options">
           <label htmlFor="image-input">

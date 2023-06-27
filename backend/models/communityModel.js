@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const communitySchema = mongoose.Schema(
+const communitySchema = new mongoose.Schema(
   {
     name: { type: String, require: true },
     admin: { type: String, require: true },
@@ -8,8 +8,8 @@ const communitySchema = mongoose.Schema(
     members: { type: Array, default: [] },
     posts: { type: Array, default: [] },
     images: {
-      profile: { type: String, required: true },
-      cover: { type: String, require: true },
+      profile: { type: String },
+      cover: { type: String },
     },
   },
   { timestamps: true }

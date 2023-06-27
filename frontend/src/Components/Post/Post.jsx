@@ -116,10 +116,7 @@ export const Post = ({ data }) => {
           id="post-button"
           onClick={handleLike}
           style={{
-            color:
-              isLiked
-                ? 'var(--blue)'
-                : 'white',
+            color: isLiked ? 'var(--blue)' : 'white',
           }}
         >
           Like <span>{like}</span>

@@ -37,14 +37,14 @@ body::-webkit-scrollbar-track {
   background-color: var(--dark-primary);
   position: fixed;
 }
-.error-container {
-  position: absolute;
-  top: 0;
-  width: 80%;
-  margin: auto;
-  padding: 2vh 2vw;
-  display: flex;
-  flex-direction: column;
+.error-message {
+  margin: 0;
+  padding: 0;
+  margin-top: -10px;
+}
+.success-message {
+  font-size: x-small;
+  color: limegreen;
 }
 .icon {
   cursor: pointer;

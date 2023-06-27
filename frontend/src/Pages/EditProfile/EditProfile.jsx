@@ -5,15 +5,17 @@ import { PageWrapper } from '../../Components/PageWrapper/PageWrapper';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 import axios from 'axios';
-import { SuccessMessage } from '../../Components/SuccessMessage/SuccessMessage';
-import { ErrorMessage } from '../../Components/ErrorMessage/ErrorMessage';
 import { loginUser } from '../../redux/authReducer';
 
 export const EditProfile = () => {
   const user = useSelector((state) => state.auth.user);
   console.log(user.image);
   const [imageUrl, setImageUrl] = useState(null);
-  const [message, setMessage] = useState(undefined);
+  const [nameMessage, setNameMessage] = useState(undefined);
+  const [photoMessage, setPhotoMessage] = useState(undefined);
+  const [emailMessage, setEmailMessage] = useState(undefined);
+  const [descriptionMessage, setDescriptionMessage] = useState(undefined);
+  const [passwordMessage, setPasswordMessage] = useState(undefined);
   const [error, setError] = useState(undefined);
 
   const name = useRef();
@@ -35,13 +37,15 @@ export const EditProfile = () => {
     setImageUrl(response.data.imageUrl);
   };
 
+  console.log(error);
+
   const handleImage = async () => {
     try {
       const details = {
         image: imageUrl,
       };
       await axios.put(`/user/${user._id}`, details);
-      setMessage('Image uploaded successfully.');
+      setPhotoMessage('Image uploaded successfully.');
       dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
@@ -54,7 +58,7 @@ export const EditProfile = () => {
         name: name.current.value === '' ? user.name : name.current.value,
       };
       await axios.put(`/user/${user._id}`, details);
-      setMessage('Name changed successfully.');
+      setNameMessage('Name changed successfully.');
       dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
@@ -67,7 +71,7 @@ export const EditProfile = () => {
         email: email.current.value === '' ? user.email : email.current.value,
       };
       await axios.put(`/user/${user._id}`, details);
-      setMessage('Email changed successfully');
+      setEmailMessage('Email changed successfully');
       dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
@@ -83,7 +87,7 @@ export const EditProfile = () => {
             : desc.current.value,
       };
       await axios.put(`/user/${user._id}`, details);
-      setMessage('Description changed successfully');
+      setDescriptionMessage('Description changed successfully');
       dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
@@ -98,7 +102,7 @@ export const EditProfile = () => {
         confirmPassword: confirmPassword.current.value,
       };
       await axios.put(`/user/${user._id}/reset-password`, details);
-      setMessage('Password changed successfully');
+      setPasswordMessage('Password changed successfully');
       dispatch(loginUser(user.email, user.password));
     } catch (error) {
       setError(error.message);
@@ -108,10 +112,6 @@ export const EditProfile = () => {
   const handleDelete = async () => {};
   return (
     <Wrapper>
-      <div id="message-container">
-        <SuccessMessage success={message} />
-        <ErrorMessage error={error} />
-      </div>
       <Topbar />
       <PageWrapper>
         <div id="edit-profile-container">
@@ -148,9 +148,7 @@ export const EditProfile = () => {
                 Save picture
               </button>
             </label>
-            <p className="success-message">
-              Profile picture updated successfully.
-            </p>
+            <p className="success-message">{photoMessage}</p>
           </div>
           <div className="edit-profile-children">
             <span className="edit-profile-header">Change your name</span>
@@ -169,6 +167,7 @@ export const EditProfile = () => {
               <button className="edit-profile-button" onClick={handleName}>
                 Save changes
               </button>
+              <p className="success-message">{nameMessage}</p>
             </div>
           </div>
           <div className="edit-profile-children">
@@ -190,6 +189,7 @@ export const EditProfile = () => {
                 Save changes
               </button>
             </div>
+            <p className="success-message">{emailMessage}</p>
           </div>
           <div className="edit-profile-children">
             <span className="edit-profile-header">Change your description</span>
@@ -204,6 +204,7 @@ export const EditProfile = () => {
             <button className="edit-profile-button" onClick={handleDescription}>
               Save changes
             </button>
+            <p className="success-message">{descriptionMessage}</p>
           </div>
           <div className="edit-profile-children">
             <span className="edit-profile-header">Change your password</span>
@@ -237,6 +238,7 @@ export const EditProfile = () => {
                 Save changes
               </button>
             </div>
+            <p className="success-message">{passwordMessage}</p>
           </div>
           <div className="edit-profile-children">
             <span className="edit-profile-header">Delete your account</span>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const communityPostSchema = mongoose.Schema(
+const communityPostSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true },
     communityId: { type: String, required: true },
