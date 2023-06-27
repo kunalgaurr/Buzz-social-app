@@ -11,7 +11,9 @@ export const UserChat = () => {
       <Topbar />
       <div id="user-chat-container">
         <ChatBox />
-        <FriendList />
+        <div id="friend-list-box">
+          <FriendList />
+        </div>
       </div>
     </Wrapper>
   );
