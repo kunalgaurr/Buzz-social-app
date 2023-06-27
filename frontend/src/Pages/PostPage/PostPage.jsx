@@ -7,12 +7,9 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Loader } from '../../Components/Loader/Loader';
 import './PostPage.css';
-import { format } from 'timeago.js';
-import { useSelector } from 'react-redux';
 
 export const PostPage = () => {
   const { postId } = useParams();
-  const currentUser = useSelector((state) => state.auth.user);
   const [post, setPost] = useState(null);
   const [user, setUser] = useState(null);
 
